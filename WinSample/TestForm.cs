@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using RiveScript.lang;
+using RiveScriptSample;
 
-namespace RiveScriptSample
+namespace WinSample
 {
-    public partial class Form1 : Form
+    public partial class TestForm : Form
     {
         private RiveScript.RiveScript rs;
-        public Form1()
+        public TestForm()
         {
             InitializeComponent();
             InitializeEngine();
@@ -142,8 +136,8 @@ namespace RiveScriptSample
         private void btnStreamCode_Click(object sender, EventArgs e)
         {
             InitializeEngine(txtCode.Lines);
-            var erro = rs.error();
-            rs.dumpSorted();
+            //var erro = rs.error();
+            //rs.dumpSorted();
             //CSharp ss = new CSharp();
             //ss.onLoad("showmessage", new[] { "reference System.Windows.Forms.dll;", "System.Windows.Forms.MessageBox.Show(\"Test Message\");","return \"\";"});
             //ss.onCall("showmessage", rs, new string[] {""});
@@ -152,7 +146,14 @@ namespace RiveScriptSample
 
         private void btnGetReply_Click(object sender, EventArgs e)
         {
-            txtChatArea.AppendText($"{rs.reply("Test User", txtUserMessage.Text)}\r\n");
+            if (!string.IsNullOrWhiteSpace(txtUserMessage.Text))
+            {
+                txtChatArea.AppendText($"Test User: {txtUserMessage.Text}\r\n");
+                var reply = rs.reply("Test User", txtUserMessage.Text);
+                if(!string.IsNullOrEmpty(reply))
+                    txtChatArea.AppendText($"Bot: {reply}\r\n");
+            }
+            
         }
     }
 }

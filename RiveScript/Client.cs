@@ -6,7 +6,7 @@ namespace RiveScript
     /// <summary>
     /// Represent individual user´s data
     /// </summary>
-    public class Client
+    public class Client:IClient
     {
         private string id;
         private IDictionary<string, string> data = new Dictionary<string, string>();

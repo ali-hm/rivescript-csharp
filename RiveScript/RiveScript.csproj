@@ -44,6 +44,8 @@
     <Compile Include="ErrorMessages.cs" />
     <Compile Include="Helpers\ExtensionsMethods.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="IClient.cs" />
+    <Compile Include="IClientManager.cs" />
     <Compile Include="Inheritance.cs" />
     <Compile Include="IObjectHandler.cs" />
     <Compile Include="lang\CSharp.cs" />

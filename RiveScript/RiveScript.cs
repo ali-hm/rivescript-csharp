@@ -41,7 +41,7 @@ namespace RiveScript
         private TopicManager topics = new TopicManager();
 
         // Bot's users' data structure.
-        private ClientManager clients = new ClientManager();
+        private IClientManager clients = new ClientManager();
 
         // Object handlers //TODO: At this moment, just have a CSHarpHander
         private IDictionary<string, IObjectHandler> handlers = new Dictionary<string, IObjectHandler>();
@@ -307,6 +307,15 @@ namespace RiveScript
         public void setHandler(string name, IObjectHandler handler)
         {
             handlers.Add(name, handler);
+        }
+
+        /// <summary>
+        /// Set the ClientManager
+        /// </summary>
+        /// <param name="clientsManager"></param>
+        public void setClientsManager(IClientManager clientsManager)
+        {
+            clients = clientsManager;
         }
 
         /// <summary>
@@ -1352,7 +1361,7 @@ namespace RiveScript
             var stars = new List<string>(); // Wildcard matches
             var botstars = new List<string>(); // Wildcards in %Previous
             var _reply = "";                   // The eventual reply
-            Client profile = null;                  // The user's profile object
+            IClient profile = null;                  // The user's profile object
 
             // Get the user's profile.
             profile = clients.client(user);
@@ -1858,7 +1867,7 @@ namespace RiveScript
         /// <param name="profile">Client profile</param>
         /// <param name="trigger">The raw trigger text.</param>
         /// <returns></returns>
-        private string triggerRegexp(string user, Client profile, string trigger)
+        private string triggerRegexp(string user, IClient profile, string trigger)
         {
             // If the trigger is simply '*', it needs to become (.*?) so it catches the empty string.
             var regexp = trigger.ReplaceRegex("^\\*$", "<zerowidthstar>");
@@ -2067,7 +2076,7 @@ namespace RiveScript
         /// <param name="vbst">The vector of wildcards in any %Previous.</param>
         /// <param name="step">The current recursion depth limit.</param>
         /// <returns></returns>
-        private string processTags(string user, Client profile, string message, string reply,
+        private string processTags(string user, IClient profile, string message, string reply,
                                    List<string> vst, List<string> vbst, int step)
         {
             // Pad the stars.

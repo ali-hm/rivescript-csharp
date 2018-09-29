@@ -8,7 +8,7 @@ namespace RiveScript
     /// <summary>
     ///  Manager for all the bot's users.
     /// </summary>
-    public class ClientManager
+    public class ClientManager: IClientManager
     {
         private ConcurrentDictionary<string, Client> clients = new ConcurrentDictionary<string, Client>();
 
@@ -19,7 +19,7 @@ namespace RiveScript
             return clients.Keys.ToArray();
         }
 
-        public Client client(string username)
+        public IClient client(string username)
         {
             return clients.GetOrAdd(username, new Client(username));
         }
