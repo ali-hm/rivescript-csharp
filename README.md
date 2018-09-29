@@ -1,14 +1,10 @@
 # CSharp RiveScript Interpreter
 
-[![Build status](https://ci.appveyor.com/api/projects/status/crwboe7fa6aseqvc/branch/master?svg=true)](https://ci.appveyor.com/project/fabioravila/rivescript-csharp/branch/master)
-[![MIT License](https://img.shields.io/github/license/fabioravila/rivescript-csharp.svg)](./LICENSE)
-
 ## DOCUMENTATION
 
-:TODO - C# API documentation
-
-Also check out the [**RiveScript Community Wiki**](https://github.com/aichaos/rivescript/wiki) 
-for common design patterns and tips & tricks for RiveScript.
+This is a fork of the RiveScript interpreter for C# .Net written by fabioravila. 
+RiveScript is a scripting language for chatterbots. http://www.rivescript.com. 
+I forked it to add more features like persisted client manager using DB or File System , ...
 
 ## LICENSE
 
