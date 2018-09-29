@@ -1,0 +1,46 @@
+﻿+message
+-<call>showmessage</call>
+
+> object showmessage csharp
+   reference System.Windows.Forms.dll;
+   System.Windows.Forms.MessageBox.Show("Test Message");
+   return "";
+< object
+
+
+
++ sum # and #
+- result is: <call>sum <star1> <star2></call>
+
+> object sum csharp
+    return (int.Parse(args[0]) + int.Parse(args[1])).ToString();
+< object
+
+
++message *
+-<call>showmessage <star></call>
+
+> object showmessage csharp
+   reference System.Windows.Forms.dll;
+   System.Windows.Forms.MessageBox.Show(string.Join(" ",args));
+   return "";
+< object
+
+
++ سلام
+- سلام به روی ماهت
+
++ اسم من * هست
+- <star> عزیز از آشناییت خوشحالم
+
++ من * هستم
+@ اسم من <star> هست
+
+
+
++message *
+-<call>showmessage <star></call>
+
+> object showmessage aliscript
+< object
+
